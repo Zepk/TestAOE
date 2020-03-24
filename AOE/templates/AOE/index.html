@@ -1,0 +1,80 @@
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+}
+table tr:nth-child(even) {
+  background-color: #eee;
+}
+table tr:nth-child(odd) {
+ background-color: #fff;
+}
+table th {
+  background-color: black;
+  color: white;
+}
+</style>
+
+
+
+{% if datos %}
+
+
+
+   <h1>WELCOME</h1>
+
+
+
+     <table style="width:100%">
+       <rt>
+         <th>Civilization</th>
+         <th>Expansion</th>
+         <th>Army</th>
+         <th>Unic unit</th>
+         <th>Unique tech</th>
+         <th>Team bonus</th>
+         <th>Civilization bonus</th>
+
+       </tr>
+
+       {% for civilization in datos.civilizations %}
+         <tr>
+           <td>{{civilization.name}}</td>
+           <td>{{civilization.expansion}}</td>
+           <td>{{civilization.army_type}}</td>
+           <td>
+             {% for unit in civilization.unique_unit_list %}
+
+             <a href = "/unitdetail/{{unit}}">{{unit}}</a>
+
+             {% endfor %}
+           </td>
+
+
+           <td>
+             {% for tech in civilization.unique_tech_list %}
+
+             {{tech}}
+
+             {% endfor %}
+           </td>
+
+           <td>{{civilization.team_bonus}}</td>
+           <td>{{civilization.civilization_bonus}}</td>
+
+
+         </tr>
+       {% endfor %}
+     </table>
+
+
+
+
+
+
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
