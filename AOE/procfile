@@ -1,1 +1,1 @@
-web: gunicorn AOE.wsgi
+web: gunicorn AOEAPI.wsgi
